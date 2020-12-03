@@ -57,7 +57,7 @@ def p2(grid: List[str]):
     print(total)
 
 
-if __name__ == "__main__":
+def main():
     start = time.perf_counter()
 
     with open('./3/input.txt') as f:
@@ -70,3 +70,7 @@ if __name__ == "__main__":
 
     end = time.perf_counter()
     print((end - start) * 1000)
+
+
+if __name__ == "__main__":
+    main()
