@@ -1,4 +1,4 @@
-from typing import List, Dict, Callable, Tuple
+from typing import List, Callable, Dict
 import time
 import re
 
@@ -41,8 +41,8 @@ def check_height(height: str):
     return measurement >= limits[unit][0] and measurement <= limits[unit][1]
 
 
-def check_passport(current_passport: dict[str, str]):
-    required: dict[str, Callable[[str], bool]] = {
+def check_passport(current_passport: Dict[str, str]):
+    required: Dict[str, Callable[[str], bool]] = {
         'byr': lambda x: len(x) == 4 and int(x) >= 1920 and int(x) <= 2002,
         'iyr': lambda x: len(x) == 4 and int(x) >= 2010 and int(x) <= 2020,
         'eyr': lambda x: len(x) == 4 and int(x) >= 2020 and int(x) <= 2030,
