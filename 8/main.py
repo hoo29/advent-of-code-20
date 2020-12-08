@@ -26,27 +26,6 @@ def p1(program: list[str]):
             return
 
 
-def run_program(program: list[str], acc: int, run_lines: set[int]):
-    while line_num < len(program):
-        run_lines.add(line_num)
-        operator = program[line_num].split()[0]
-        operand = program[line_num].split()[1]
-
-        if operator == 'acc':
-            acc += int(operand)
-            line_num += 1
-        elif operator == 'jmp':
-            line_num += int(operand)
-        elif operator == 'nop':
-            line_num += 1
-        else:
-            raise RuntimeError(f"unknown op {operator}")
-
-        if line_num in run_lines:
-            print(f"loop, acc {acc}")
-            return
-
-
 def p2(program: list[str]):
     acc = 0
     line_num = 0
