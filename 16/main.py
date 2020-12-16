@@ -84,17 +84,12 @@ def p2(lines: list[str]):
                     no[value_ind].add(rule_name)
                     maybe[value_ind].discard(rule_name)
 
-    done = False
-    while not done:
-        changed = False
+    while any([x for x in range(0, len(maybe)) if len(maybe[x]) != 1]):
         for set_with_one_element_ind in [x for x in range(0, len(maybe)) if len(maybe[x]) == 1]:
             set_with_one_element = maybe[set_with_one_element_ind]
             for other_set_ind in [x for x in range(0, len(maybe)) if x != set_with_one_element_ind and len(maybe[x]) != 1]:
-                changed = True
                 maybe[other_set_ind] = maybe[other_set_ind].difference(
                     set_with_one_element)
-        if not changed:
-            done = True
 
     solved: list[str] = [list(x)[0] for x in maybe]
 
