@@ -24,8 +24,8 @@ def p1(passports: List[str]):
 
 def check_height(height: str):
     limits = {
-        "cm": [150, 193],
-        "in": [59, 76]
+        'cm': [150, 193],
+        'in': [59, 76]
     }
 
     if len(height) < 3:
@@ -74,8 +74,7 @@ def p2(passports: List[str]):
             current_passport = {}
         else:
             matches = re.findall(pattern, line)
-            current_passport = {**current_passport, **
-                                {item[0]: item[1] for item in matches}}
+            current_passport = {**current_passport, **{item[0]: item[1] for item in matches}}
 
     print(count)
 
@@ -98,5 +97,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

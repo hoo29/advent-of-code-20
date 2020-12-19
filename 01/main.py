@@ -35,7 +35,7 @@ def p2(expenses: List[int]):
     print(value)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     start = time.perf_counter()
 
     with open('./1/input.txt') as f:

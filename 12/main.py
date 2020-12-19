@@ -35,7 +35,7 @@ def p1(lines: list[Tuple[str, int]]):
         elif action == 'F':
             x, y = move(x, y, dir_, value)
         else:
-            raise RuntimeError(f"unknown action f{action}")
+            raise RuntimeError(f'unknown action f{action}')
 
     print(abs(x) + abs(y))
 
@@ -67,7 +67,7 @@ def p2(lines: list[Tuple[str, int]]):
             x += wx * value
             y += wy * value
         else:
-            raise RuntimeError(f"unknown action f{action}")
+            raise RuntimeError(f'unknown action f{action}')
 
     print(abs(x) + abs(y))
 
@@ -87,5 +87,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

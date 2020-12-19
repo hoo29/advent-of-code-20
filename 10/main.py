@@ -24,7 +24,7 @@ def p1(lines: list[int]):
 def p2(lines: list[int], cache: dict):
 
     # don't judge me
-    lines_hash = "".join([str(x) for x in lines])
+    lines_hash = ''.join([str(x) for x in lines])
 
     if lines_hash in cache:
         return cache[lines_hash]
@@ -63,5 +63,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

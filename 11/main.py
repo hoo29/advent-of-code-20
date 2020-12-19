@@ -4,10 +4,10 @@ import cProfile
 # not the best performance
 
 
-def gen_adj_grid(lines: list[str], y: str, y_ind: int, x_ind: int):
+def gen_adj_grid(lines: list[list[str]], y: list[str], y_ind: int, x_ind: int):
     adj = []
     for line in range(max(y_ind - 1, 0), min(len(lines), y_ind + 2)):
-        adj.append(lines[line][max(x_ind-1, 0): min(len(y), x_ind+2)])
+        adj.append(lines[line][max(x_ind - 1, 0): min(len(y), x_ind + 2)])
     return adj
 
 
@@ -18,7 +18,7 @@ def count_char_in_grid(grid: list[str], char: str):
     return count
 
 
-def char_filled_seats(grid: list[str], start_x: int, start_y: int, direction: str):
+def char_filled_seats(grid: list[list[str]], start_x: int, start_y: int, direction: str):
 
     y = start_y
     x = start_x
@@ -46,7 +46,7 @@ def char_filled_seats(grid: list[str], start_x: int, start_y: int, direction: st
             return 1
 
 
-def p1(plan: list[str]):
+def p1(plan: list[list[str]]):
     new_plan = []
     new_line = []
     for y_ind, y in enumerate(plan):
@@ -81,7 +81,7 @@ def p1(plan: list[str]):
         return p1(new_plan)
 
 
-def p2(plan: list[str]):
+def p2(plan: list[list[str]]):
     new_plan = []
     new_line = []
     dirs = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw']
@@ -89,7 +89,7 @@ def p2(plan: list[str]):
         for x_ind, x in enumerate(y):
             occupied_count = 0
             for dir_ in dirs:
-                occupied_count += char_filled_seats(plan,  x_ind, y_ind, dir_)
+                occupied_count += char_filled_seats(plan, x_ind, y_ind, dir_)
 
             if x == '.':
                 char = '.'
@@ -135,5 +135,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
-    cProfile.run("main()")
+if __name__ == '__main__':
+    cProfile.run('main()')

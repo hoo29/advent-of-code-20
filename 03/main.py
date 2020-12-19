@@ -44,14 +44,14 @@ def count_trees(grid: List[str], right: int, down: int):
 
 def p2(grid: List[str]):
     slopes = [
-        {"right": 1, "down": 1},
-        {"right": 3, "down": 1},
-        {"right": 5, "down": 1},
-        {"right": 7, "down": 1},
-        {"right": 1, "down": 2}
+        {'right': 1, 'down': 1},
+        {'right': 3, 'down': 1},
+        {'right': 5, 'down': 1},
+        {'right': 7, 'down': 1},
+        {'right': 1, 'down': 2}
     ]
 
-    totals = [count_trees(grid, slope["right"], slope["down"])
+    totals = [count_trees(grid, slope['right'], slope['down'])
               for slope in slopes]
     total = math.prod(totals)
     print(total)
@@ -72,5 +72,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

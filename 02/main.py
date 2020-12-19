@@ -40,7 +40,7 @@ def p2(passwords: List[str]):
     print(matches)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     start = time.perf_counter()
 
     with open('./2/input.txt') as f:

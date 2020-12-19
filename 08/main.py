@@ -1,4 +1,3 @@
-from typing import List
 import time
 
 
@@ -19,10 +18,10 @@ def p1(program: list[str]):
         elif operator == 'nop':
             line_num += 1
         else:
-            raise RuntimeError(f"unknown op {operator}")
+            raise RuntimeError(f'unknown op {operator}')
 
         if line_num in run_lines:
-            print(f"loop, acc {acc}")
+            print(f'loop, acc {acc}')
             return
 
 
@@ -55,12 +54,12 @@ def p2(program: list[str]):
         elif operator == 'nop':
             line_num += 1
         else:
-            raise RuntimeError(f"unknown op {operator}")
+            raise RuntimeError(f'unknown op {operator}')
 
         if line_num in run_lines:
             if not switched:
                 raise RuntimeError(
-                    "switched them all and it is still broken :(")
+                    'switched them all and it is still broken :(')
             switched = False
             acc = 0
             line_num = 0
@@ -68,7 +67,7 @@ def p2(program: list[str]):
             continue
 
         if line_num == len(program):
-            print(f"fixed, acc {acc}")
+            print(f'fixed, acc {acc}')
             return
 
 
@@ -87,5 +86,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -23,15 +23,15 @@ def init_grid(cycles: int, lines: list[str]):
 
 
 def get_neighbours(grid: list[list[list[str]]], x: int, y: int, z: int):
-    x_range = [x-1, x, x+1]
-    y_range = [y-1, y, y+1]
-    z_range = [z-1, z, z+1]
+    x_range = [x - 1, x, x + 1]
+    y_range = [y - 1, y, y + 1]
+    z_range = [z - 1, z, z + 1]
 
     if x_range[0] < 0 or y_range[0] < 0 or z_range[0] < 0:
-        raise RuntimeError("init lower violation")
+        raise RuntimeError('init lower violation')
 
     if x_range[2] >= len(grid) or y_range[2] >= len(grid[0]) or z_range[2] >= len(grid[0][0]):
-        raise RuntimeError("init upper violation")
+        raise RuntimeError('init upper violation')
 
     neighbours: list[list[list[str]]] = []
     for grid_x_ind, grid_x in enumerate(x_range):

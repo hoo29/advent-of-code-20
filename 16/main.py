@@ -3,7 +3,7 @@ import math
 
 
 def parse_rules(lines: list[str]):
-    rules: dict[str, tuple[int, int]] = {}
+    rules: dict[str, list[tuple[int, int]]] = {}
     raw_rules = lines[:lines.index('')]
     for raw_rule in raw_rules:
         name = raw_rule.split(':')[0]
@@ -33,21 +33,21 @@ def parse_nearby_tickets(lines: list[str]):
     return items
 
 
-def check_value_valid_for_rule(value: int, rule_bounds: tuple[int, int]):
+def check_value_valid_for_rule(value: int, rule_bounds: list[tuple[int, int]]):
     for bound in rule_bounds:
         if bound[0] <= value <= bound[1]:
             return True
     return False
 
 
-def check_value_valid(value: int, rules: dict[str, tuple[int, int]]):
+def check_value_valid(value: int, rules: dict[str, list[tuple[int, int]]]):
     for _, rule_bounds in rules.items():
         if check_value_valid_for_rule(value, rule_bounds):
             return True
     return False
 
 
-def check_ticket_valid(ticket: list[int], rules: dict[str, tuple[int, int]]):
+def check_ticket_valid(ticket: list[int], rules: dict[str, list[tuple[int, int]]]):
     for value in ticket:
         match = check_value_valid(value, rules)
         if not match:
@@ -114,5 +114,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

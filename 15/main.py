@@ -12,7 +12,9 @@ def sol(input: list[int], limit: int):
             last = input[ind]
             history[last] = [turn]
         else:
-            previous = history.get(last)
+            previous = history.get(last, None)
+            if previous is None:
+                raise RuntimeError('well this has gone badly')
             if len(previous) == 1:
                 last = 0
             else:
@@ -40,5 +42,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

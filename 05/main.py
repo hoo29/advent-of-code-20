@@ -1,4 +1,3 @@
-from typing import List, Callable, Dict
 import time
 import math
 
@@ -16,15 +15,15 @@ def bsp(code: str, max_value: int):
         elif char in upper_chars:
             low += math.ceil((high - low) / 2)
         else:
-            raise RuntimeError(f"unknown char {char}")
+            raise RuntimeError(f'unknown char {char}')
 
     if low != high:
-        raise RuntimeError(f"error {low} != {high}")
+        raise RuntimeError(f'error {low} != {high}')
 
     return low
 
 
-def p1(passes: List[str]):
+def p1(passes: list[str]):
     rows = 127
     columns = 7
 
@@ -44,7 +43,7 @@ def p1(passes: List[str]):
     print(max(seat_ids))
 
 
-def p2(passes: List[str]):
+def p2(passes: list[str]):
     rows = 127
     columns = 7
 
@@ -84,5 +83,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

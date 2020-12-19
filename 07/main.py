@@ -18,7 +18,7 @@ class Bag:
         return o.colour == self.colour and o.style == self.style
 
     def __hash__(self) -> int:
-        return hash(f"{self.colour}{self.style}")
+        return hash(f'{self.colour}{self.style}')
 
     @property
     def colour(self):
@@ -136,5 +136,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

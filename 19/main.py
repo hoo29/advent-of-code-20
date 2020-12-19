@@ -26,6 +26,25 @@ def parse_grammar(lines: list[str]):
 
     return rules
 
+
+# skeleton of this found after googling...
+
+def check_message2(rules: Rules, message: str, rules_to_proc: list[Union[int, str]]):
+    if len(message) == 0 or len(rules_to_proc) == 0:
+        return len(message) == 0 and len(rules_to_proc) == 0
+
+    next_rule_raw = rules_to_proc.pop()
+
+    if isinstance(next_rule_raw, str):
+        if message[0] == next_rule_raw:
+            return check_message2(rules, message[1:], rules_to_proc.copy())
+    else:
+        for sub_rule in rules[next_rule_raw]:
+            if check_message2(rules, message, rules_to_proc + list(reversed(sub_rule))):
+                return True
+
+    return False
+
 # pretty sure this works by chance...
 
 
@@ -70,26 +89,6 @@ def p1(lines: list[str]):
     print(count)
 
 
-# skeleton of this found after googling...
-
-def check_message_but_better(message: str, rule_stack: list[Union[int, str]], rules: Rules):
-    if len(rule_stack) > len(message):
-        return False
-    elif len(rule_stack) == 0 or len(message) == 0:
-        return len(rule_stack) == 0 and len(message) == 0
-
-    rule_ind_raw = rule_stack.pop()
-    if isinstance(rule_ind_raw, str):
-        if message[0] == rule_ind_raw:
-            return check_message_but_better(message[1:], rule_stack.copy(), rules)
-    else:
-        for sub_rule in rules[rule_ind_raw]:
-            if check_message_but_better(message, rule_stack + list(reversed(sub_rule)), rules):
-                return True
-
-    return False
-
-
 def p2(lines: list[str]):
     gram = parse_grammar(lines)
 
@@ -97,16 +96,15 @@ def p2(lines: list[str]):
     gram[11] = [[42, 31], [42, 11, 31]]
 
     messages = lines[lines.index('') + 1:]
-    count = len([x for x in messages if check_message_but_better(
-        x, list(reversed(gram[0][0])), gram)])
-
+    count = len([x for x in messages if check_message2(gram,
+                                                       x, list(reversed(gram[0][0])))])
     print(count)
 
 
 def main():
     start = time.perf_counter()
     cur_dir = os.path.dirname(os.path.realpath(__file__))
-    with open(f'{cur_dir}/test1.txt') as f:
+    with open(f'{cur_dir}/input.txt') as f:
         lines = f.readlines()
 
     lines = [x.rstrip() for x in lines]

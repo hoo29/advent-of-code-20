@@ -1,17 +1,19 @@
+from __future__ import annotations
 import time
 import os
+from typing import Tuple
 
 
-class please:
+class Please:
     def __init__(self, n: int) -> None:
         super().__init__()
         self.n = n
 
-    def __mul__(self, o: int) -> int:
-        return please(self.n + o.n)
+    def __mul__(self, o: Please) -> Please:
+        return Please(self.n + o.n)
 
-    def __sub__(self, o: int) -> int:
-        return please(self.n * o.n)
+    def __sub__(self, o: Please) -> Please:
+        return Please(self.n * o.n)
 
 
 def find_matching_bracket(line: list[str]):
@@ -27,20 +29,21 @@ def find_matching_bracket(line: list[str]):
     raise RuntimeError('no matching bracket found')
 
 
-def parse_op1(op: str, ind: int, line: list[str]):
+def parse_op1(op: str, ind: int, line: list[str]) -> Tuple[int, int]:
+    new_op = -1
     if op == ')':
         raise RuntimeError('should not happen')
     elif op == '(':
         matching_ind = find_matching_bracket(line[ind + 1:]) + ind
-        op = solve1(line[ind + 1: matching_ind + 1])
+        new_op = solve1(line[ind + 1: matching_ind + 1])
         ind = matching_ind + 2
     elif op.isnumeric():
-        op = int(op)
+        new_op = int(op)
         ind += 1
     else:
         raise RuntimeError(f'unknown value {op}')
 
-    return ind, op
+    return ind, new_op
 
 
 def solve1(line: list[str]):
@@ -77,13 +80,13 @@ def p2(lines: list[str]):
     sum = 0
     for line in lines:
         line_copy = line
-        locals_ = {f'please{better_int}': please(
+        locals_ = {f'Please{better_int}': Please(
             better_int) for better_int in range(10)}
 
         for num in range(10):
-            line_copy = line_copy.replace(str(num), f'please{num}')
+            line_copy = line_copy.replace(str(num), f'Please{num}')
 
-        line_copy = line_copy.replace("*", "-")
+        line_copy = line_copy.replace('*', '-')
         line_copy = line_copy.replace('+', '*')
         sum += int(eval(line_copy, None, locals_).n)
     print(sum)

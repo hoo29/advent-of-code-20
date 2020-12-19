@@ -33,7 +33,7 @@ def p2(lines: list[int], invalid_num: int):
         section = lines[min_ind: max_ind]
         total = sum(section)
         if total == invalid_num:
-            print(f"p2 {min(section) + max(section)}")
+            print(f'p2 {min(section) + max(section)}')
             return
         elif total < invalid_num:
             max_ind += 1
@@ -59,5 +59,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -15,9 +15,9 @@ def set_bits(mask: str, value: int):
 
 
 def set_mask_bits(mask: str, value: str):
-    mask_value = ""
-    bit_string = f"{int(value):b}"
-    bit_string = ("0" * (len(mask) - len(bit_string))) + bit_string
+    mask_value = ''
+    bit_string = f'{int(value):b}'
+    bit_string = ('0' * (len(mask) - len(bit_string))) + bit_string
     for ind, char in enumerate(mask):
         if char == 'X':
             mask_value += char
@@ -30,7 +30,7 @@ def set_mask_bits(mask: str, value: str):
 
 def p1(lines: list[str]):
     mem = {}
-    cur_mask = ""
+    cur_mask = ''
     pattern = re.compile(r'\[([0-9]*)\]')
     for line in lines:
         if line.startswith('mask = '):
@@ -65,7 +65,7 @@ def gen_masks(offset: str):
 
 def p2(lines: list[str]):
     mem = {}
-    cur_mask = ""
+    cur_mask = ''
     pattern = re.compile(r'\[([0-9]*)\]')
     for line in lines:
         if line.startswith('mask = '):
@@ -97,5 +97,5 @@ def main():
     print((end - start) * 1000)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
