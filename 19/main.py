@@ -27,9 +27,9 @@ def parse_grammar(lines: list[str]):
     return rules
 
 
-# skeleton of this found after googling...
-
 def check_message2(rules: Rules, message: str, rules_to_proc: list[Union[int, str]]):
+    # skeleton of this found after googling...
+
     if len(message) == 0 or len(rules_to_proc) == 0:
         return len(message) == 0 and len(rules_to_proc) == 0
 
@@ -45,10 +45,9 @@ def check_message2(rules: Rules, message: str, rules_to_proc: list[Union[int, st
 
     return False
 
-# pretty sure this works by chance...
-
 
 def check_message(rule: Rule, rules: Rules, message: str, message_ind: int):
+    # pretty sure this works by chance...
 
     if message_ind >= len(message):
         return False, 0
