@@ -40,7 +40,7 @@ class Bag:
         self.parents.add(bag)
 
 
-def search_parents(parents: set[Bag], bag_to_match: Bag, visited: set(Bag)):
+def search_parents(parents: set[Bag], bag_to_match: Bag, visited: set[Bag]):
     for node in parents:
         if node not in visited:
             visited.add(node)
